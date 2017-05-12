@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="valueSelector_text">15dp</dimen>
+    <dimen name="valueSelector_label_text">14dp</dimen>
+    <dimen name="valueSelector_margin_top">26dp</dimen>
+    <dimen name="valueSelector_button_hMargin">26dp</dimen>
+    <dimen name="valueSelector_button_insideMargin">150dp</dimen>
+    <dimen name="motoSelector_button_insideMargin">240dp</dimen>
+
+</resources>
+

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#7575e1</color>
+    <color name="colorPrimaryDark">#66657eff</color>
+    <color name="colorAccent">#b73434</color>
+    <color name="colorBackroundLighter">#5e84a4</color>
+    <color name="colorBackroundDarker">#344b5f</color>
+    <color name="red">#e43f39</color>
+    <color name="white">#ffffff</color>
+    <color name="black">#292929</color>
+    <color name="ice_white">#eef4f7</color>
+    <color name="grey">#917a7a</color>
+    <color name="input_login_hint">#999999</color>
+    <color name="input_login">#222222</color>
+    <color name="calm_red">#e74c3c</color>
+    <color name="calm_red_trans">#a8e74c3c</color>
+    <color name="light_gray">#b0afaf</color>
+    <color name="quick_search">#d9e0f2</color>
+    <color name="hint_search">#3beef4f7</color>
+    <color name="white_trans">#d9d9d8d8</color>
+    <color name="trans">#00ffffff</color>
+    <color name="yellow">#f0d3a82b</color>
+
+    <color name="toolbar">#324d4a4d</color>
+    <color name="colorBackround">#47637b</color>
+    <color name="transparent">#0047637b</color>
+</resources>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+
+
+    <ImageView
+        android:src="@drawable/valueselect_minus_state"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/valueSelector_button_hMargin"
+        android:layout_marginBottom="@dimen/valueSelector_button_hMargin"
+
+        android:layout_marginRight="@dimen/motoSelector_button_insideMargin"
+        android:id="@+id/motominusButton"
+        android:clickable="true"
+        android:layout_centerVertical="true"
+        android:layout_alignRight="@+id/valueTextView" />
+
+    <ImageView
+        android:src="@drawable/valueselect_plus_state"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/valueSelector_button_hMargin"
+        android:layout_marginBottom="@dimen/valueSelector_button_hMargin"
+        android:layout_marginLeft="@dimen/motoSelector_button_insideMargin"
+        android:id="@+id/motoplusButton"
+        android:clickable="true"
+        android:layout_centerVertical="true"
+        android:layout_alignLeft="@+id/valueTextView" />
+
+    <EditText
+        android:id="@+id/motoTextView"
+        android:layout_width="180dp"
+        android:layout_height="38dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/valueSelector_margin_top"
+        android:background="#c24d4a4d"
+        android:enabled="false"
+        android:text="0 MOTORCYCLE"
+        android:textAlignment="center"
+        android:textColor="#ffffff"
+        android:textSize="@dimen/valueSelector_text" />
+
+</merge>
+

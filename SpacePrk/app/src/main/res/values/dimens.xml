@@ -1,0 +1,10 @@
+<resources>
+    <dimen name="activity_horizontal_margin">15dp</dimen>
+    <dimen name="activity_vertical_margin">220dp</dimen>
+
+    <dimen name="valueSelector_height">90dp</dimen>
+    <dimen name="valueSelector_hMargin">0dp</dimen>
+
+
+
+</resources>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.kostis.spaceprk.UserActivity"
+
+    >
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/tool_bar" />
+
+
+
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/userback"
+    android:background="@drawable/town"
+    >
+    <ImageView
+        android:id="@+id/astronaut"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+
+        app:srcCompat="@drawable/astronaut"
+        android:layout_marginTop="20dp"
+
+        android:layout_centerHorizontal="true" />
+
+    <ImageView
+        android:id="@+id/CarText"
+        android:layout_width="275dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/astronaut"
+
+        app:srcCompat="@drawable/car_choice"
+        android:layout_marginTop="8dp"
+        android:layout_centerHorizontal="true"
+        />
+
+    <ImageView
+        android:id="@+id/firstCar"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_below="@+id/CarText"
+android:clickable="true"
+
+        android:layout_marginTop="15dp"
+        android:layout_centerHorizontal="true"
+        />
+    <ImageView
+        android:id="@+id/secondCar"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_below="@+id/firstCar"
+        android:clickable="true"
+
+        android:layout_marginTop="23dp"
+        android:layout_centerHorizontal="true"
+        />
+    <ImageView
+        android:id="@+id/thirdCar"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_below="@+id/secondCar"
+        android:clickable="true"
+
+
+        android:layout_marginTop="23dp"
+        android:layout_centerHorizontal="true"
+        />
+
+    <Button
+        android:id="@+id/aboutus"
+        android:layout_width="85dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="10dp"
+        android:background="@drawable/btnaboutus_state"
+        android:text=""
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="10dp"
+        />
+
+</RelativeLayout>
+
+
+</RelativeLayout>

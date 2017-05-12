@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">""</string>
+    <string name="valueSelector_label">CAR</string>
+    <string name="motoSelector_label">MOTORCYCLE</string>
+    <string name="valueBarLabel">CURRENT VALUE</string>
+    <string name="app">SpacePrk</string>
+
+</resources>

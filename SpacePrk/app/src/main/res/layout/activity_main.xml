@@ -1,0 +1,97 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainlayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity"
+    android:weightSum="1"
+    android:background="@drawable/background"
+    >
+
+    <include
+        android:id="@+id/toolbarmain"
+        layout="@layout/tool_barmain" />
+
+    <ImageView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:id="@+id/logo"
+        android:background="@drawable/logo"
+        android:layout_below="@+id/toolbarmain"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        />
+
+    <com.intertech.customviews.ValueSelector
+        android:id="@+id/valueSelector"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/logo"
+        android:layout_marginTop="45dp"
+        android:layout_height="@dimen/valueSelector_height"
+        android:layout_marginLeft="@dimen/valueSelector_hMargin"
+        android:layout_marginRight="@dimen/valueSelector_hMargin"
+        android:layout_weight="0.04"
+        ></com.intertech.customviews.ValueSelector>
+
+    <com.intertech.customviews.MotoSelector
+        android:id="@+id/motoSelector"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/valueSelector"
+        android:layout_marginTop="-48dp"
+        android:layout_height="@dimen/valueSelector_height"
+        android:layout_marginLeft="@dimen/valueSelector_hMargin"
+        android:layout_marginRight="@dimen/valueSelector_hMargin"
+        android:layout_weight="0.04"
+        ></com.intertech.customviews.MotoSelector>
+
+    <ImageView
+        android:id="@+id/disabled"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="-8dp"
+        custom:srcCompat="@drawable/disability"
+        android:layout_below="@+id/motoSelector"
+        android:layout_centerHorizontal="true" />
+
+    <com.facebook.login.widget.LoginButton
+        custom:srcCompat="@drawable/login"
+
+
+        android:id="@+id/login_button"
+        android:layout_below="@+id/disabled"
+        android:layout_width="270dp"
+        android:layout_height="170dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+
+        style="@style/FacebookLoginButton"
+        xmlns:facebook="http://schemas.android.com/apk/res-auto"
+        facebook:com_facebook_login_text="@string/loginFacebookButton"
+
+        />
+
+    <ImageView
+        android:id="@+id/email_image"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        custom:srcCompat="@drawable/email"
+        android:layout_marginTop="37dp"
+        android:layout_alignTop="@+id/login_button" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:text="View Our Terms"
+        android:id="@+id/tvRegisterHere"
+        android:textStyle="bold"
+        android:textColor="#6e6b6e"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="13dp" />
+
+</RelativeLayout>

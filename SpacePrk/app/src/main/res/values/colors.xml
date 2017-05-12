@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="white">#ffffff</color>
+    <color name="yellow">#FFFF00</color>
+    <color name="red">#FF0000</color>
+    <color name="light_gray">#D6D6D6</color>
+    <color name="silver">#E5E5E5</color>
+    <color name="gray">#cac9c9</color>
+    <color name="dark_gray">#ff424242</color>
+    <color name="green">#008000</color>
+    <color name="blueSplash">#10111d</color>
+    <color name="navy">#354361</color>
+    <color name="blueblack">#10111d</color>
+    <color name="colorBackround">#47637b</color>
+    <color name="transparent">#0047637b</color>
+    <color name="toolbar">#324d4a4d</color>
+    <color name="bluelight">#6790ff</color>
+    <color name="colorPrimary">#7575e1</color>
+    <color name="colorPrimaryDark">#66657eff</color>
+    <color name="colorAccent">#b73434</color>
+    <color name="colorBackroundLighter">#5e84a4</color>
+    <color name="colorBackroundDarker">#344b5f</color>
+    <color name="black">#292929</color>
+    <color name="ice_white">#eef4f7</color>
+    <color name="grey">#a8aaaa</color>
+    <color name="input_login_hint">#999999</color>
+    <color name="input_login">#222222</color>
+    <color name="calm_red">#e74c3c</color>
+    <color name="calm_red_trans">#a8e74c3c</color>
+    <color name="quick_search">#d9e0f2</color>
+    <color name="hint_search">#3beef4f7</color>
+    <color name="white_trans">#d9ffffff</color>
+    <color name="trans">#00ffffff</color>
+    <color name="autocomplete_background_color">#f0efefef</color>
+</resources>

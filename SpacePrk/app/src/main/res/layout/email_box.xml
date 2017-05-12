@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:id="@+id/linear"
+    android:background="@drawable/email_background"
+    >
+
+
+    <!--NAME-->
+
+    <ImageView
+        android:id="@+id/x_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        app:srcCompat="@drawable/x" />
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="100dp"
+        android:layout_height="70dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/logoblack" />
+
+    <TextView
+        android:id="@+id/editText"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="50dp"
+        android:text="Create new account"
+        android:textColor="@color/black"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/etUserName"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/logo"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:hint="USERNAME"
+        android:imeOptions="actionNext"
+        android:maxLines="1"
+        android:textColor="@color/blueblack"
+        android:textSize="14sp" />
+
+
+    <!--MAIL-->
+
+    <EditText
+        android:id="@+id/etMail"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/etUserName"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/etUserName"
+        android:layout_gravity="center"
+        android:ems="10"
+        android:hint="EMAIL ADDRESS"
+        android:imeOptions="actionNext"
+        android:inputType="textEmailAddress"
+        android:maxLines="1"
+        android:textColor="@color/blueblack"
+        android:textSize="14sp" />
+
+    <!--PASSWORD-->
+    <EditText
+        android:id="@+id/etPasswordLog"
+        android:layout_width="302dp"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/etMail"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/etMail"
+        android:layout_gravity="center"
+        android:ems="10"
+        android:hint="PASSWORD"
+        android:imeOptions="actionNext"
+        android:inputType="textPassword"
+        android:maxLines="1"
+        android:textColor="@color/blueblack"
+        android:textSize="14sp" />
+
+    <!--RE PASSWORD-->
+
+
+    <ImageView
+        android:id="@+id/sign_in"
+        android:layout_width="50dp"
+        android:layout_height="20dp"
+        android:layout_gravity="right"
+        android:layout_marginTop="150dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/sign_in" />
+
+    <Button
+        android:id="@+id/sign_up"
+        android:layout_width="match_parent"
+        android:layout_height="29dp"
+        android:background="@drawable/hold_on"
+        android:textColor="#ffffff"
+        android:textSize="18sp"
+        android:layout_marginTop="18.5dp"
+
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"/>
+
+</LinearLayout>

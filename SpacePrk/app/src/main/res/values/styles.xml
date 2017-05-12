@@ -1,0 +1,28 @@
+<resources>
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/gray</item>
+        <item name="colorPrimaryDark">@color/blueSplash</item>
+
+    </style>
+
+	
+	
+	 <style name="FacebookLoginButton">
+        <item name="android:text"></item>
+
+        <item name="android:textSize">22dp</item>
+        <item name="android:background">@drawable/login</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginBottom">10dp</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+    </style>
+
+
+    <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowBackground">@drawable/background_splash</item>
+
+        <item name="colorPrimary">@color/colorBackround</item>
+
+    </style>
+</resources>
