@@ -25,4 +25,9 @@
         <item name="colorPrimary">@color/colorBackround</item>
 
     </style>
+
+    <style name="toggle_text" parent="@android:style/TextAppearance.Small">
+        <item name="android:textColor">@color/bluelight</item>
+    </style>
+
 </resources>

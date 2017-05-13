@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:paddingBottom="10dp"
+    android:paddingTop="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:onClick="true"
+
+    >
+
+
+
+    <ImageView
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginLeft="16dp"
+        android:id="@+id/iv_NavIcon"
+
+
+
+        />
+
+
+    <TextView
+        android:layout_gravity="center"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:id="@+id/tv_NavTitle"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+
+        android:textSize="15sp"
+
+
+        />
+
+    <Switch
+        android:id="@+id/switch1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:switchTextAppearance="@style/toggle_text"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:text=""
+        android:visibility="invisible"
+
+
+        />
+    <Switch
+        android:id="@+id/switch2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:switchTextAppearance="@style/toggle_text"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:text=""
+        android:visibility="invisible"
+        android:layout_marginLeft="-45dp"
+
+        />
+</LinearLayout>

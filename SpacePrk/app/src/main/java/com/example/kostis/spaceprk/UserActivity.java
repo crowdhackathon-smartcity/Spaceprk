@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 
+import android.content.res.TypedArray;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 
@@ -20,13 +21,19 @@ import android.support.annotation.Nullable;
 
 import android.support.v4.app.ActivityCompat;
 
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 ;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 
+import android.view.LayoutInflater;
 import android.view.View;
 
 import android.view.Window;
@@ -34,6 +41,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -43,7 +51,7 @@ import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.model.LatLng;
 
-
+import java.util.Random;
 
 
 public class UserActivity extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, LocationListener {
@@ -57,8 +65,21 @@ public class UserActivity extends AppCompatActivity implements GoogleApiClient.C
     public static final String DEFAULT = "N/A";
     String savedname, savedsmall, savedlastname, savedemail, savedmedium, savedbig, savedpay, savedfree;
 
+
+
+    Context context;
     UserActivity ctx = this;
     Toolbar toolbar;
+    DrawerLayout drawerLayout;
+    RecyclerView recyclerView;
+    String navTitles[];
+    TypedArray navIcons;
+    RecyclerView.Adapter recyclerViewAdapter;
+    ActionBarDrawerToggle drawerToggle;
+    View view;
+    Random rand = new Random();
+    String tag;
+
 
     public String LONGTITUDE,LATITUDE,TAG1,TAG2,TAG3,EMAIL;
     boolean doubleBackToExitPressedOnce = false;
@@ -245,6 +266,78 @@ public class UserActivity extends AppCompatActivity implements GoogleApiClient.C
         });
 
 
+        ///----------------------drawer
+        //Initialize Views
+        recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawer);
+        //Setup Titles and Icons of Navigation Drawer
+        navTitles = getResources().getStringArray(R.array.navDrawerItems);
+        navIcons = getResources().obtainTypedArray(R.array.navDrawerIcons);
+
+        //DIVIDERS
+        recyclerView.addItemDecoration(new com.example.kostis.spaceprk.DividerItemDecoration(getResources().getDrawable(R.drawable.line_seperator)));
+        recyclerViewAdapter = new RecyclerViewAdapter(navTitles, navIcons, this);
+        recyclerView.setAdapter(recyclerViewAdapter);
+
+        /**
+         *It is must to set a Layout Manager For Recycler View
+         *As per docs ,
+         *RecyclerView allows client code to provide custom layout arrangements for child views.
+         *These arrangements are controlled by the RecyclerView.LayoutManager.
+         *A LayoutManager must be provided for RecyclerView to function.
+         */
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        //Finally setup ActionBarDrawerToggle
+        setupDrawerToggle();
+        LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View homeView = inflater.inflate(R.layout.header, null);
+        TextView header = (TextView) homeView.findViewById(R.id.username);
+        final View ameavView= inflater.inflate(R.layout.tool_bar, null);
+        final ImageView amea=(ImageView) ameavView.findViewById(R.id.amea) ;
+
+
+
+
+
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawer);
+        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.openDrawer, R.string.closeDrawer) {
+            @Override
+            public void onDrawerClosed(View drawerView) {
+                // Code here will be triggered once the drawer closes as we dont want anything to happen so we leave this blank
+                super.onDrawerClosed(drawerView);
+            }
+
+            @Override
+            public void onDrawerOpened(View drawerView) {
+                // Code here will be triggered once the drawer open as we dont want anything to happen so we leave this blank
+                super.onDrawerOpened(drawerView);
+
+
+            }
+        };
+
+        //change drawerToggle button icon
+        actionBarDrawerToggle.setDrawerIndicatorEnabled(false);
+        Drawable drawable = getResources().getDrawable(R.drawable.slide_menu_icon);
+        actionBarDrawerToggle.setHomeAsUpIndicator(drawable);
+        actionBarDrawerToggle.setToolbarNavigationClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (drawerLayout.isDrawerVisible(GravityCompat.START)) {
+                    drawerLayout.closeDrawer(GravityCompat.START);
+                } else {
+                    drawerLayout.openDrawer(GravityCompat.START);
+                }
+            }
+        });
+        //Setting the actionbarToggle to drawer layout
+        drawerLayout.setDrawerListener(actionBarDrawerToggle);
+
+//---------------------end drawer
+
+
     }
 
 
@@ -283,6 +376,12 @@ public class UserActivity extends AppCompatActivity implements GoogleApiClient.C
 
 
         }
+    }
+
+    void setupDrawerToggle() {
+        drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.app_name, R.string.app_name);
+        //This is necessary to change the icon of the Drawer Toggle upon state change.
+        drawerToggle.syncState();
     }
 
 
