@@ -4,3 +4,4 @@ C:\SmartCity\Spaceprk\SpacePrk.WebApi\SpacePrk.Models\bin\Debug\netcoreapp1.1\Sp
 C:\SmartCity\Spaceprk\SpacePrk.WebApi\SpacePrk.Models\obj\Debug\netcoreapp1.1\SpacePrk.Models.AssemblyInfo.cs
 C:\SmartCity\Spaceprk\SpacePrk.WebApi\SpacePrk.Models\obj\Debug\netcoreapp1.1\SpacePrk.Models.dll
 C:\SmartCity\Spaceprk\SpacePrk.WebApi\SpacePrk.Models\obj\Debug\netcoreapp1.1\SpacePrk.Models.pdb
+C:\SmartCity\Spaceprk\SpacePrk.WebApi\SpacePrk.Models\obj\Debug\netcoreapp1.1\SpacePrk.Models.csprojResolveAssemblyReference.cache

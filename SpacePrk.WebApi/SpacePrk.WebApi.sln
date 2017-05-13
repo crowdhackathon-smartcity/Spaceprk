@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpacePrk.Repositories", "Sp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpacePrk.Services", "SpacePrk.Services\SpacePrk.Services.csproj", "{C25AD014-3176-4EAE-855F-94C3B6633ED3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpacePrk.Helpers", "SPACEPRK.HELPERS\SpacePrk.Helpers.csproj", "{2966F8F4-E861-48F2-9666-20A357D0CD16}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{C25AD014-3176-4EAE-855F-94C3B6633ED3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C25AD014-3176-4EAE-855F-94C3B6633ED3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C25AD014-3176-4EAE-855F-94C3B6633ED3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2966F8F4-E861-48F2-9666-20A357D0CD16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2966F8F4-E861-48F2-9666-20A357D0CD16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2966F8F4-E861-48F2-9666-20A357D0CD16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2966F8F4-E861-48F2-9666-20A357D0CD16}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

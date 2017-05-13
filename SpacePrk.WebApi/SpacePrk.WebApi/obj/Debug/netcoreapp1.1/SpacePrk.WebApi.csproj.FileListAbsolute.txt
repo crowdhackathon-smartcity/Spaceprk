@@ -6,3 +6,4 @@ C:\SmartCity\Spaceprk\SpacePrk.WebApi\SpacePrk.WebApi\bin\Debug\netcoreapp1.1\Sp
 C:\SmartCity\Spaceprk\SpacePrk.WebApi\SpacePrk.WebApi\obj\Debug\netcoreapp1.1\SpacePrk.WebApi.AssemblyInfo.cs
 C:\SmartCity\Spaceprk\SpacePrk.WebApi\SpacePrk.WebApi\obj\Debug\netcoreapp1.1\SpacePrk.WebApi.dll
 C:\SmartCity\Spaceprk\SpacePrk.WebApi\SpacePrk.WebApi\obj\Debug\netcoreapp1.1\SpacePrk.WebApi.pdb
+C:\SmartCity\Spaceprk\SpacePrk.WebApi\SpacePrk.WebApi\obj\Debug\netcoreapp1.1\SpacePrk.WebApi.csprojResolveAssemblyReference.cache

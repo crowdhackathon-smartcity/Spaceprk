@@ -1,7 +1,13 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp1.1</TargetFramework>
   </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SPACEPRK.HELPERS\SpacePrk.Helpers.csproj" />
+    <ProjectReference Include="..\SpacePrk.Models\SpacePrk.Models.csproj" />
+    <ProjectReference Include="..\SpacePrk.Repositories\SpacePrk.Repositories.csproj" />
+  </ItemGroup>
 
 </Project>
