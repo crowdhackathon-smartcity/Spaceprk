@@ -7,3 +7,11 @@ C:\SmartCity\Spaceprk\SpacePrk.WebApi\SpacePrk.WebApi\obj\Debug\netcoreapp1.1\Sp
 C:\SmartCity\Spaceprk\SpacePrk.WebApi\SpacePrk.WebApi\obj\Debug\netcoreapp1.1\SpacePrk.WebApi.dll
 C:\SmartCity\Spaceprk\SpacePrk.WebApi\SpacePrk.WebApi\obj\Debug\netcoreapp1.1\SpacePrk.WebApi.pdb
 C:\SmartCity\Spaceprk\SpacePrk.WebApi\SpacePrk.WebApi\obj\Debug\netcoreapp1.1\SpacePrk.WebApi.csprojResolveAssemblyReference.cache
+C:\SmartCity\Spaceprk\SpacePrk.WebApi\SpacePrk.WebApi\bin\Debug\netcoreapp1.1\SpacePrk.Helpers.dll
+C:\SmartCity\Spaceprk\SpacePrk.WebApi\SpacePrk.WebApi\bin\Debug\netcoreapp1.1\SpacePrk.Models.dll
+C:\SmartCity\Spaceprk\SpacePrk.WebApi\SpacePrk.WebApi\bin\Debug\netcoreapp1.1\SpacePrk.Repositories.dll
+C:\SmartCity\Spaceprk\SpacePrk.WebApi\SpacePrk.WebApi\bin\Debug\netcoreapp1.1\SpacePrk.Services.dll
+C:\SmartCity\Spaceprk\SpacePrk.WebApi\SpacePrk.WebApi\bin\Debug\netcoreapp1.1\SpacePrk.Repositories.pdb
+C:\SmartCity\Spaceprk\SpacePrk.WebApi\SpacePrk.WebApi\bin\Debug\netcoreapp1.1\SpacePrk.Services.pdb
+C:\SmartCity\Spaceprk\SpacePrk.WebApi\SpacePrk.WebApi\bin\Debug\netcoreapp1.1\SpacePrk.Helpers.pdb
+C:\SmartCity\Spaceprk\SpacePrk.WebApi\SpacePrk.WebApi\bin\Debug\netcoreapp1.1\SpacePrk.Models.pdb

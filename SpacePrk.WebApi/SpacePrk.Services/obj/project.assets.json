@@ -2960,7 +2960,8 @@
         "dependencies": {
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "1.1.2",
           "Microsoft.EntityFrameworkCore.Tools": "1.1.1",
-          "Microsoft.NETCore.App": "1.1.1"
+          "Microsoft.NETCore.App": "1.1.1",
+          "SpacePrk.Helpers": "1.0.0"
         }
       },
       "SpacePrk.Repositories/1.0.0": {

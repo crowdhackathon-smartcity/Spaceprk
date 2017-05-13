@@ -32,5 +32,25 @@ namespace SpacePrk.Repositories
             var freeSpaces = _context.ParkingSpace.Where(s => s.IsFree); // Fix Available Space here
             return freeSpaces;
         }
+
+        public bool InsertParkingSpace(PostFreeSpaceRequest request)
+        {
+            if (request == null)
+            {
+                return false;
+            }
+
+            var spaceToAdd = new ParkingSpace()
+            {
+                AvailableSpace = request.SpaceLength,
+                Latitude = request.Latitude,
+                Longitude = request.Longitude,
+                IsFree = true
+            };
+
+            _context.ParkingSpace.Add(spaceToAdd);
+
+            return (_context.SaveChanges() > 0) ? true : false;
+        }
     }
 }

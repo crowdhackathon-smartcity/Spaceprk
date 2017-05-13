@@ -2946,6 +2946,13 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XPath.XDocument.dll": {}
         }
+      },
+      "SpacePrk.Helpers/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v1.1",
+        "dependencies": {
+          "Microsoft.NETCore.App": "1.1.1"
+        }
       }
     }
   },
@@ -8531,13 +8538,19 @@
         "ref/xamarintvos10/_._",
         "ref/xamarinwatchos10/_._"
       ]
+    },
+    "SpacePrk.Helpers/1.0.0": {
+      "type": "project",
+      "path": "../SPACEPRK.HELPERS/SpacePrk.Helpers.csproj",
+      "msbuildProject": "../SPACEPRK.HELPERS/SpacePrk.Helpers.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v1.1": [
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 1.1.2",
       "Microsoft.EntityFrameworkCore.Tools >= 1.1.1",
-      "Microsoft.NETCore.App >= 1.1.1"
+      "Microsoft.NETCore.App >= 1.1.1",
+      "SpacePrk.Helpers >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -8556,7 +8569,11 @@
       ],
       "frameworks": {
         "netcoreapp1.1": {
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\SmartCity\\Spaceprk\\SpacePrk.WebApi\\SPACEPRK.HELPERS\\SpacePrk.Helpers.csproj": {
+              "projectPath": "C:\\SmartCity\\Spaceprk\\SpacePrk.WebApi\\SPACEPRK.HELPERS\\SpacePrk.Helpers.csproj"
+            }
+          }
         }
       }
     },

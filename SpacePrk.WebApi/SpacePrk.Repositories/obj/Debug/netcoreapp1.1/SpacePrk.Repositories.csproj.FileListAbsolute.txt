@@ -7,3 +7,5 @@ C:\SmartCity\Spaceprk\SpacePrk.WebApi\SpacePrk.Repositories\obj\Debug\netcoreapp
 C:\SmartCity\Spaceprk\SpacePrk.WebApi\SpacePrk.Repositories\obj\Debug\netcoreapp1.1\SpacePrk.Repositories.AssemblyInfo.cs
 C:\SmartCity\Spaceprk\SpacePrk.WebApi\SpacePrk.Repositories\obj\Debug\netcoreapp1.1\SpacePrk.Repositories.dll
 C:\SmartCity\Spaceprk\SpacePrk.WebApi\SpacePrk.Repositories\obj\Debug\netcoreapp1.1\SpacePrk.Repositories.pdb
+C:\SmartCity\Spaceprk\SpacePrk.WebApi\SpacePrk.Repositories\bin\Debug\netcoreapp1.1\SpacePrk.Helpers.dll
+C:\SmartCity\Spaceprk\SpacePrk.WebApi\SpacePrk.Repositories\bin\Debug\netcoreapp1.1\SpacePrk.Helpers.pdb

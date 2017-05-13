@@ -30,17 +30,20 @@ namespace SpacePrk.Services
 
             switch (request.CarType)
             {
-                case "Small"://CarType.Small:
+                case 1://(int)CarType.Small:
                     freeSpaces = _prkSpaceRepo.GetAvailablePrkSpacesBySize(Constants.SMALL_CAR_MIN_SIZE, Constants.SMALL_CAR_MAX_SIZE);
                     break;
-                case "Medium"://CarType.Medium:
+                case 2://(int)CarType.Medium:
                     freeSpaces = _prkSpaceRepo.GetAvailablePrkSpacesBySize(Constants.MEDIUM_CAR_MIN_SIZE, Constants.MEDIUM_CAR_MAX_SIZE);
                     break;
-                case "Big"://CarType.Big:
+                case 3://(int)CarType.Big:
                     freeSpaces = _prkSpaceRepo.GetAvailablePrkSpacesBySize(Constants.BIG_CAR_MIN_SIZE, Constants.BIG_CAR_MAX_SIZE);
                     break;
 
             }
+
+            if (freeSpaces == null)
+                return null;
 
             foreach (var space in freeSpaces)
             {
@@ -54,6 +57,13 @@ namespace SpacePrk.Services
             }
 
             return freeSpacesToReturn;
+        }
+
+        public bool InsertParkingSpace(PostFreeSpaceRequest request)
+        {
+            var success = _prkSpaceRepo.InsertParkingSpace(request);
+
+            return (success) ? true : false;
         }
 
         #region PrivateMethods
