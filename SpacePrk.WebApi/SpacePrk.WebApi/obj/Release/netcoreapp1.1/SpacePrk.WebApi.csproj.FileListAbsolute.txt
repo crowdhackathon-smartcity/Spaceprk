@@ -1,0 +1,17 @@
+C:\SmartCity\Spaceprk\SpacePrk.WebApi\SpacePrk.WebApi\bin\Release\netcoreapp1.1\SpacePrk.WebApi.deps.json
+C:\SmartCity\Spaceprk\SpacePrk.WebApi\SpacePrk.WebApi\bin\Release\netcoreapp1.1\SpacePrk.WebApi.runtimeconfig.json
+C:\SmartCity\Spaceprk\SpacePrk.WebApi\SpacePrk.WebApi\bin\Release\netcoreapp1.1\SpacePrk.WebApi.runtimeconfig.dev.json
+C:\SmartCity\Spaceprk\SpacePrk.WebApi\SpacePrk.WebApi\bin\Release\netcoreapp1.1\SpacePrk.WebApi.dll
+C:\SmartCity\Spaceprk\SpacePrk.WebApi\SpacePrk.WebApi\bin\Release\netcoreapp1.1\SpacePrk.WebApi.pdb
+C:\SmartCity\Spaceprk\SpacePrk.WebApi\SpacePrk.WebApi\bin\Release\netcoreapp1.1\SpacePrk.Helpers.dll
+C:\SmartCity\Spaceprk\SpacePrk.WebApi\SpacePrk.WebApi\bin\Release\netcoreapp1.1\SpacePrk.Models.dll
+C:\SmartCity\Spaceprk\SpacePrk.WebApi\SpacePrk.WebApi\bin\Release\netcoreapp1.1\SpacePrk.Repositories.dll
+C:\SmartCity\Spaceprk\SpacePrk.WebApi\SpacePrk.WebApi\bin\Release\netcoreapp1.1\SpacePrk.Services.dll
+C:\SmartCity\Spaceprk\SpacePrk.WebApi\SpacePrk.WebApi\bin\Release\netcoreapp1.1\SpacePrk.Repositories.pdb
+C:\SmartCity\Spaceprk\SpacePrk.WebApi\SpacePrk.WebApi\bin\Release\netcoreapp1.1\SpacePrk.Services.pdb
+C:\SmartCity\Spaceprk\SpacePrk.WebApi\SpacePrk.WebApi\bin\Release\netcoreapp1.1\SpacePrk.Helpers.pdb
+C:\SmartCity\Spaceprk\SpacePrk.WebApi\SpacePrk.WebApi\bin\Release\netcoreapp1.1\SpacePrk.Models.pdb
+C:\SmartCity\Spaceprk\SpacePrk.WebApi\SpacePrk.WebApi\obj\Release\netcoreapp1.1\SpacePrk.WebApi.csprojResolveAssemblyReference.cache
+C:\SmartCity\Spaceprk\SpacePrk.WebApi\SpacePrk.WebApi\obj\Release\netcoreapp1.1\SpacePrk.WebApi.AssemblyInfo.cs
+C:\SmartCity\Spaceprk\SpacePrk.WebApi\SpacePrk.WebApi\obj\Release\netcoreapp1.1\SpacePrk.WebApi.dll
+C:\SmartCity\Spaceprk\SpacePrk.WebApi\SpacePrk.WebApi\obj\Release\netcoreapp1.1\SpacePrk.WebApi.pdb

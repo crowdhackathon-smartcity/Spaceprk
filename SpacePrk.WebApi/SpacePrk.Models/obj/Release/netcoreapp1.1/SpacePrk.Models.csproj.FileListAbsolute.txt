@@ -1,0 +1,9 @@
+C:\SmartCity\Spaceprk\SpacePrk.WebApi\SpacePrk.Models\bin\Release\netcoreapp1.1\SpacePrk.Models.deps.json
+C:\SmartCity\Spaceprk\SpacePrk.WebApi\SpacePrk.Models\bin\Release\netcoreapp1.1\SpacePrk.Models.dll
+C:\SmartCity\Spaceprk\SpacePrk.WebApi\SpacePrk.Models\bin\Release\netcoreapp1.1\SpacePrk.Models.pdb
+C:\SmartCity\Spaceprk\SpacePrk.WebApi\SpacePrk.Models\bin\Release\netcoreapp1.1\SpacePrk.Helpers.dll
+C:\SmartCity\Spaceprk\SpacePrk.WebApi\SpacePrk.Models\bin\Release\netcoreapp1.1\SpacePrk.Helpers.pdb
+C:\SmartCity\Spaceprk\SpacePrk.WebApi\SpacePrk.Models\obj\Release\netcoreapp1.1\SpacePrk.Models.csprojResolveAssemblyReference.cache
+C:\SmartCity\Spaceprk\SpacePrk.WebApi\SpacePrk.Models\obj\Release\netcoreapp1.1\SpacePrk.Models.AssemblyInfo.cs
+C:\SmartCity\Spaceprk\SpacePrk.WebApi\SpacePrk.Models\obj\Release\netcoreapp1.1\SpacePrk.Models.dll
+C:\SmartCity\Spaceprk\SpacePrk.WebApi\SpacePrk.Models\obj\Release\netcoreapp1.1\SpacePrk.Models.pdb

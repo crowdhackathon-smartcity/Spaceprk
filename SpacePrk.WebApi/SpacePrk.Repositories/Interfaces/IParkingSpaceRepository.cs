@@ -10,5 +10,6 @@ namespace SpacePrk.Repositories.Interfaces
         IEnumerable<ParkingSpace> GetAvailablePrkSpacesByLocation(ParkingSpaceRequest request);
         IEnumerable<ParkingSpace> GetAllAvailablePrkSpaces();
         bool InsertParkingSpace(PostFreeSpaceRequest request);
+        IEnumerable<ParkingSpace> GetDisabilitySpaces();
     }
 }

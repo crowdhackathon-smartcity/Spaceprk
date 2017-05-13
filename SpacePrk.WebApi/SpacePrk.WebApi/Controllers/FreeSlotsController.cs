@@ -54,6 +54,17 @@ namespace SpacePrk.Controllers
             return new JsonResult(freeSpaces);
         }
 
+        [HttpGet("disability")]
+        public IActionResult GetDisabilitySpaces()
+        {
+            var spaces = _prkSpaceService.GetDisabilitySpaces();
+
+            if (!spaces.Any())
+                return NotFound();
+
+            return new JsonResult(spaces.ToList());
+        }
+
         //// GET api/values/5
         //[HttpGet("{id}")]
         //public string Get(int id)

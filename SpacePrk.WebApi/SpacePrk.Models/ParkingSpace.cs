@@ -7,5 +7,6 @@
         public double Longitude { get; set; }
         public bool IsFree { get; set; } = true;
         public float AvailableSpace { get; set; }
+        public bool? IsDisabilitySpace { get; set; }
     }
 }

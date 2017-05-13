@@ -66,6 +66,13 @@ namespace SpacePrk.Services
             return (success) ? true : false;
         }
 
+        public IEnumerable<ParkingSpace> GetDisabilitySpaces()
+        {
+            var spaces = _prkSpaceRepo.GetDisabilitySpaces();
+
+            return spaces;
+        }
+
         #region PrivateMethods
         private double ToRadian(double val)
         {

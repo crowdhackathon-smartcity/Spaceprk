@@ -12,7 +12,7 @@ using SpacePrk.Repositories.Interfaces;
 using SpacePrk.Services.Interfaces;
 using SpacePrk.Services;
 
-namespace SpacePrk
+namespace SpacePrk.WebApi
 {
     public class Startup
     {

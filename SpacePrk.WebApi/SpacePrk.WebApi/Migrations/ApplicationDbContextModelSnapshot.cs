@@ -315,6 +315,8 @@ namespace SpacePrk.WebApi.Migrations
 
                     b.Property<bool>("IsActive");
 
+                    b.Property<bool?>("IsDisabilitySpace");
+
                     b.Property<bool>("IsFree");
 
                     b.Property<double>("Latitude");

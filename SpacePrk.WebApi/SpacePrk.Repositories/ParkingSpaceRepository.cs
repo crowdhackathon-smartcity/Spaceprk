@@ -18,7 +18,7 @@ namespace SpacePrk.Repositories
 
         public IEnumerable<ParkingSpace> GetAvailablePrkSpacesBySize(int minSize, int maxSize)
         {
-            var freeSpaces = _context.ParkingSpace.Where(s => s.IsFree && s.AvailableSpace > minSize && s.AvailableSpace < maxSize); // Fix Available Space here
+            var freeSpaces = _context.ParkingSpace.Where(s => s.IsFree && s.AvailableSpace > minSize && s.AvailableSpace < maxSize && (s.IsDisabilitySpace == false || s.IsDisabilitySpace == null)); // Fix Available Space here
             return freeSpaces;
         }
 
@@ -51,6 +51,12 @@ namespace SpacePrk.Repositories
             _context.ParkingSpace.Add(spaceToAdd);
 
             return (_context.SaveChanges() > 0) ? true : false;
+        }
+
+        public IEnumerable<ParkingSpace> GetDisabilitySpaces()
+        {
+            var spaces = _context.ParkingSpace.Where(s => s.IsDisabilitySpace == true);
+            return spaces;
         }
     }
 }
