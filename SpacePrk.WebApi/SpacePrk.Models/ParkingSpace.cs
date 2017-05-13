@@ -1,6 +1,6 @@
 ﻿namespace SpacePrk.Models
 {
-    public class ParkingSpace : BaseModel
+    public class ParkingSpace
     {
         public int ParkingSpaceId { get; set; }
         public double Latitude { get; set; }
