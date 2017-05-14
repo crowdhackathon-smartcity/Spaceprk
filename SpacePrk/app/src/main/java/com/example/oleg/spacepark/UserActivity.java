@@ -13,6 +13,7 @@ import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.location.LocationManager;
+import android.os.AsyncTask;
 import android.os.Handler;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
@@ -54,6 +55,32 @@ import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.model.LatLng;
 
 
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.ByteArrayEntity;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicHeader;
+import org.apache.http.params.BasicHttpParams;
+import org.apache.http.params.HttpConnectionParams;
+import org.apache.http.params.HttpParams;
+import org.apache.http.protocol.HTTP;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.UnsupportedEncodingException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Random;
 
 
@@ -85,7 +112,7 @@ public class UserActivity extends AppCompatActivity implements GoogleApiClient.C
     View view;
     Random rand = new Random();
     String tag;
-    public String LONGTITUDE,LATITUDE,TAG1,TAG2,TAG3,EMAIL,CITY,ADDRESS;
+    public String LONGTITUDE,LATITUDE,TAG1,TAG2,TAG3,EMAIL,SERVER_RESULTS,ADDRESS,LATSERVER,LONGSERVER,ID;
     boolean doubleBackToExitPressedOnce = false;
     ///end drawer
     ///location
@@ -96,6 +123,7 @@ public class UserActivity extends AppCompatActivity implements GoogleApiClient.C
     ////end location
     Drawable firstslot,secondslot,thirdslot;
     int colorARGB = R.color.blueSplash;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -216,6 +244,34 @@ public class UserActivity extends AppCompatActivity implements GoogleApiClient.C
 
 
 
+    /*    LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+        if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+            alertDialogBuilder.setMessage("Please enable GPS! ")
+                    .setCancelable(false)
+                    .setNegativeButton("enable GPS ",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    Intent callGPSSettingIntent = new Intent(
+                                            android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                                    startActivity(callGPSSettingIntent);
+                                    overridePendingTransition( R.anim.slide_in_up, R.anim.slide_out_up );
+                                }
+
+                            });
+            alertDialogBuilder.setPositiveButton("Cancel",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                            System.exit(0);
+                            finish();
+                        }
+                    });
+            AlertDialog alert = alertDialogBuilder.create();
+            alert.show();
+            alert.getWindow().setBackgroundDrawableResource(R.color.colorBackround);
+        }
+        */
 
 ///LOCATION
         mGoogleApiClient = new GoogleApiClient.Builder(this)
@@ -233,6 +289,19 @@ public class UserActivity extends AppCompatActivity implements GoogleApiClient.C
 
 
 
+        savedfree = savedfree;
+        savedpay = savedpay;
+/*
+        Intent intent = getIntent();
+        small = intent.getStringExtra("smallcar");
+        medium = intent.getStringExtra("mediumcar");
+        big = intent.getStringExtra("bigcar");
+        name = intent.getStringExtra("name");
+        last_name = intent.getStringExtra("lastname");
+        email = intent.getStringExtra("email");
+        savedfree = intent.getStringExtra("free");
+        savedpay = intent.getStringExtra("pay");
+*/
         Log.e("Free: ", savedfree + "");
         Log.e("pay: ", savedpay + "");
         Log.e("name: ", name + "");
@@ -277,17 +346,15 @@ public class UserActivity extends AppCompatActivity implements GoogleApiClient.C
         firstCar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                BackGround b = new BackGround();
+                b.execute(LATITUDE, LONGTITUDE, TAG1);
+
+
                 firstslot.setColorFilter(getResources().getColor(R.color.bluelight), PorterDuff.Mode.MULTIPLY );
                 firstCar.setImageDrawable(firstslot);
-                Intent intent = new Intent(UserActivity.this, MapsActivity.class);
-                intent.putExtra("LATITUDE", LATITUDE);
-                intent.putExtra("LONGTITUDE", LONGTITUDE);
-                intent.putExtra("TAG1", TAG1);
-                intent.putExtra("TAG2", TAG2);
-                intent.putExtra("TAG3", TAG3);
-                intent.putExtra("CITY", CITY);
 
-                startActivity(intent);
+
 
 
             }
@@ -295,17 +362,13 @@ public class UserActivity extends AppCompatActivity implements GoogleApiClient.C
         secondCar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                BackGround b = new BackGround();
+                b.execute(LATITUDE, LONGTITUDE, TAG2);
+
                 secondslot.setColorFilter(getResources().getColor(R.color.bluelight), PorterDuff.Mode.MULTIPLY );
                 secondCar.setImageDrawable(secondslot);
-                Intent intent = new Intent(UserActivity.this, MapsActivity.class);
-                intent.putExtra("LATITUDE", LATITUDE);
-                intent.putExtra("LONGTITUDE", LONGTITUDE);
-                intent.putExtra("TAG1", TAG1);
-                intent.putExtra("TAG2", TAG2);
-                intent.putExtra("TAG3", TAG3);
-                intent.putExtra("CITY", CITY);
 
-                startActivity(intent);
 
 
 
@@ -320,17 +383,14 @@ public class UserActivity extends AppCompatActivity implements GoogleApiClient.C
                     thirdCar.setImageDrawable(secondslot);
                     showDialog(UserActivity.this, "Pick your Car");
                 }else{
+
+                    BackGround b = new BackGround();
+                    b.execute(LATITUDE, LONGTITUDE, TAG3);
+
+
                     thirdslot.setColorFilter(getResources().getColor(R.color.bluelight), PorterDuff.Mode.MULTIPLY );
                     firstCar.setImageDrawable(thirdslot);
-                    Intent intent = new Intent(UserActivity.this, MapsActivity.class);
-                    intent.putExtra("LATITUDE", LATITUDE);
-                    intent.putExtra("LONGTITUDE", LONGTITUDE);
-                    intent.putExtra("TAG1", TAG1);
-                    intent.putExtra("TAG2", TAG2);
-                    intent.putExtra("TAG3", TAG3);
-                    intent.putExtra("CITY", CITY);
 
-                    startActivity(intent);
                 }
 
 
@@ -414,6 +474,126 @@ public class UserActivity extends AppCompatActivity implements GoogleApiClient.C
     }
 
 
+
+    class BackGround extends AsyncTask<String, String, String> {
+
+        @Override
+        protected String doInBackground(String... params) {
+            String latitude = params[0];
+            String longtitude = params[1];
+            String tagCar = params[2];
+            String data="{\"CarType\": 3,\"Latitude\": "+latitude+",\"Longitude\": "+longtitude+",\"Range\": 500 }";
+            int tmp;
+            HttpURLConnection urlConnection;
+            String url;
+
+            String result = null;
+            try {
+                //Connect
+                urlConnection = (HttpURLConnection) ((new URL("http://spacepark.azurewebsites.net/api/freeslots").openConnection()));
+                urlConnection.setDoOutput(true);
+                urlConnection.setRequestProperty("Content-Type", "application/json");
+                urlConnection.setRequestProperty("Accept", "application/json");
+                urlConnection.setRequestMethod("POST");
+                urlConnection.connect();
+
+                //Write
+                OutputStream outputStream = urlConnection.getOutputStream();
+                BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
+                writer.write(data);
+                writer.close();
+                outputStream.close();
+
+                //Read
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream(), "UTF-8"));
+
+                String line = null;
+                StringBuilder sb = new StringBuilder();
+
+                while ((line = bufferedReader.readLine()) != null) {
+                    sb.append(line);
+                }
+
+                bufferedReader.close();
+                result = sb.toString();
+
+
+
+
+                Log.e("LATITUDE: ", LATITUDE + "");
+                Log.e("LONGTITUDE: ", LONGTITUDE + "");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                SERVER_RESULTS=result;
+                Log.e("SERVER_RESULTSssssssss ", SERVER_RESULTS + "");
+                Intent intent = new Intent(UserActivity.this, MapsActivity.class);
+                intent.putExtra("LATITUDE", LATITUDE);
+                intent.putExtra("LONGTITUDE", LONGTITUDE);
+                intent.putExtra("TAG1", TAG1);
+                intent.putExtra("TAG2", TAG2);
+                intent.putExtra("TAG3", TAG3);
+                intent.putExtra("SERVERRESULTS", SERVER_RESULTS);
+
+                startActivity(intent);
+
+/*
+
+                JSONArray arr = new JSONArray(result);
+                JSONObject jObj = arr.getJSONObject(0);
+                String date = jObj.getString("latitude");
+                JSONArray resultTable = null;
+
+                resultTable = arr;
+                for (int i = 0; i < resultTable.length(); i++) {
+
+                    // Storing  JSON item in a Variable
+                    JSONObject place = resultTable.getJSONObject(i);
+                    // String = place.getString("latitude");
+                    //LONGSERVER = place.getString("longtitude");
+                    LATSERVER = place.getString("latitude");;
+                    LONGSERVER = place.getString("longitude");;
+                    ID = place.getString("availableSpace");
+                    Log.e("availableSpaces ", ID + "");
+                }
+                */
+
+
+
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return result;
+
+
+        }
+
+
+        }
+
+
+
     @Override
     public void onBackPressed() {
         if (doubleBackToExitPressedOnce) {
@@ -448,13 +628,11 @@ public class UserActivity extends AppCompatActivity implements GoogleApiClient.C
     public void ameaclick(View v) {
         if (v.getId() == R.id.amea) {
 
-            Intent intent = new Intent(UserActivity.this, MapsActivity.class);
-            intent.putExtra("LATITUDE", LATITUDE);
-            intent.putExtra("LONGTITUDE", LONGTITUDE);
-
-
-
-            startActivity(intent);
+            Intent intent2 = new Intent(UserActivity.this, MapsActivity.class);
+            intent2.putExtra("LATITUDE", LATITUDE);
+            intent2.putExtra("LONGTITUDE", LONGTITUDE);
+            intent2.putExtra("SERVERRESULTS", SERVER_RESULTS);
+            startActivity(intent2);
         }
     }
 
@@ -679,9 +857,7 @@ public class UserActivity extends AppCompatActivity implements GoogleApiClient.C
                 Toast.makeText(ctx, "Πατησες small", Toast.LENGTH_SHORT).show();
                 dialog.dismiss();
                 saveData(String.valueOf(small_Vehicles) ,String.valueOf(medium_Vehicles),String.valueOf(big_Vehicles));
-                Intent intent = getIntent();
-                finish();
-                startActivity(intent);
+                dialog.dismiss();
             }
         });
         medium.setOnClickListener(new View.OnClickListener() {
@@ -691,9 +867,7 @@ public class UserActivity extends AppCompatActivity implements GoogleApiClient.C
                 medium_Vehicles=medium_Vehicles+1;
                 dialog.dismiss();
                 saveData(String.valueOf(small_Vehicles) ,String.valueOf(medium_Vehicles),String.valueOf(big_Vehicles));
-                Intent intent = getIntent();
-                finish();
-                startActivity(intent);
+                dialog.dismiss();
             }
         });
         big.setOnClickListener(new View.OnClickListener() {
@@ -704,9 +878,7 @@ public class UserActivity extends AppCompatActivity implements GoogleApiClient.C
                 big_Vehicles=big_Vehicles+1;
                 dialog.dismiss();
                 saveData(String.valueOf(small_Vehicles) ,String.valueOf(medium_Vehicles),String.valueOf(big_Vehicles));
-                Intent intent = getIntent();
-                finish();
-                startActivity(intent);
+                dialog.dismiss();
             }
         });
 

@@ -92,12 +92,14 @@
         <it.moondroid.coverflow.components.ui.containers.FeatureCoverFlow
             android:id="@+id/coverflow"
             coverflow:coverHeight="150dp"
-            coverflow:coverWidth="100dp"
+            coverflow:coverWidth="150dp"
+
             coverflow:maxScaleFactor="1.2"
             coverflow:reflectionOpacity="0"
             coverflow:rotationThreshold="0.3"
             coverflow:scalingThreshold="0.1"
-            coverflow:spacing="0.5"
+            coverflow:spacing="0.35"
+            android:layout_gravity="center"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 

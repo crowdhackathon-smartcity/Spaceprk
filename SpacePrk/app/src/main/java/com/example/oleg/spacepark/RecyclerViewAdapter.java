@@ -205,7 +205,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             switch (getPosition()){
                 case 1:
 //My Vehicles
-
+                    Intent intent3 = new Intent(v.getContext(), CarSize.class);
+                    intent3.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    intent3.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(intent3);
+                    Toast.makeText(v.getContext(), "My Vehicles", Toast.LENGTH_SHORT).show();
 
                     break;
                 case 2:

@@ -2,6 +2,7 @@ package com.example.oleg.spacepark;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -22,6 +23,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -51,7 +53,15 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
+import java.text.DecimalFormat;
+import java.text.Normalizer;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -67,13 +77,12 @@ public class MapsActivity extends AppCompatActivity implements
     String savedname, savedsmall,savedlastname,savedemail, savedmedium, savedbig,savedpay,savedfree;
     public String LONGTITUDE,LATITUDE,TAG1,TAG2,TAG3,EMAIL;
     private GoogleMap mMap;
-
-    public double longitude;
-    public double latitude;
+    public String distance,disatance2,SmarkersLat,SmarkersLong;
+    public double longitude,marker1Long;
+    public double latitude,marker1Lat;
     public Button sinexia;
     //Context ctx = this;
-    String lan;
-    String lon;
+    String lan,lon,lanMarker1,lonMarker1;
     String PER_NAME,ADDRESS;
     String LAT,LNG,ID;
     String MyJson;
@@ -97,11 +106,25 @@ public class MapsActivity extends AppCompatActivity implements
     ActionBarDrawerToggle drawerToggle;
     View view;
     TextView tvfoundSpot,tvdestinationMarker,tvtimeToDestination,tvcharge,tvprice,tvcurrentPosition,tvdestinetionPosition;
+String RESULTTABLE;
+    public String dist,dist2;
+    String[] longitudeArray,lanMarker,lonMarker;
+    String[] latitudeArray;
+    Double[] markerLat,markerLong;
+
+    public  List<LatLng> parkSpace;
+    public LatLng parkSpace2,parkSpace3;
+    String SERVERRESULTS,LATSERVER,LONGSERVER;
 
 
-    public LatLng parkSpace,parkSpace2,parkSpace3;
 
-  public double  latMark1,longMark1,latMark2,longMark2,latMark3,longMark3;
+    Location loc1 = new Location("");
+    Location loc2 = new Location("");
+    Location CurentLocation = new Location("");
+
+
+
+    public double  latMark1,longMark1,latMark2,longMark2,latMark3,longMark3;
     ///end drawer
 
     @Override
@@ -110,17 +133,27 @@ public class MapsActivity extends AppCompatActivity implements
         setContentView(activity_maps);
         setupToolbar();
         loadData();
+        //Intent intent2 = getIntent();
+        //final String id = intent2.getStringExtra("SERVERRESULTS");
+        //Log.i("SUUUUUUUUUUUUUUUUUUUP", "[" + id + "]}}}}}}}}}}}}}}}}}}}}}}}}}}}}{{{{{{{{{{{{{{}}}");
 
 
         Intent intent = getIntent();
+        //SERVERRESULTS= intent.getStringExtra("SERVERRESULTS");
+        SERVERRESULTS= getIntent().getExtras().getString("SERVERRESULTS");
         LATITUDE = intent.getStringExtra("LATITUDE");
         LONGTITUDE = intent.getStringExtra("LONGTITUDE");
-        TAG1 = intent.getStringExtra("bigcar");
-        TAG2 = intent.getStringExtra("name");
-        TAG3 = intent.getStringExtra("lastname");
+        TAG1 = intent.getStringExtra("TAG1");
+        TAG2 = intent.getStringExtra("TAG2");
+        TAG3 = intent.getStringExtra("TAG3");
+
+
+
+
        // email = intent.getStringExtra("email");
         Log.i("LATITUDE", "[" + LATITUDE + "]}}}}}}}}}}}}}}}}}}}}}}}}}}}}{{{{{{{{{{{{{{}}}");
-        Log.i("TAG1", "[" + TAG1 + "]}}}}}}}}}}}}}}}}}}}}}}}}}}}}{{{{{{{{{{{{{{}}}");
+        Log.i("SUUUUUUUUUUUUUUUUUUUP", "[" + SERVERRESULTS + "]}}}}}}}}}}}}}}}}}}}}}}}}}}}}{{{{{{{{{{{{{{}}}");
+        Log.i("TAG1", "[" + TAG2 + "]}}}}}}}}}}}}}}}}}}}}}}}}}}}}{{{{{{{{{{{{{{}}}");
 
 
 
@@ -128,8 +161,8 @@ public class MapsActivity extends AppCompatActivity implements
         tvfoundSpot = (TextView)findViewById(R.id.found_spots);
         //apo map data
 
-        tvdestinationMarker = (TextView)findViewById(R.id.destinationmarker);
-        tvtimeToDestination = (TextView)findViewById(R.id.time_to_destination);
+        //tvdestinationMarker = (TextView)findViewById(R.id.destinationmarker);
+       // tvtimeToDestination = (TextView)findViewById(R.id.time_to_destination);
         tvcharge = (TextView)findViewById(R.id.chargingtx);
         tvprice = (TextView)findViewById(R.id.pricetx);
         tvcurrentPosition = (TextView)findViewById(R.id.current_position);
@@ -317,8 +350,30 @@ public class MapsActivity extends AppCompatActivity implements
 
         }
         //   Log.i("latitude", "["+ latitude+"]}}}}}}}}}}}}}}}}}}}}}}}}}}}}{{{{{{{{{{{{{{}}}");
+
+        populateMarkers(SERVERRESULTS);
+        Log.e("FINALYLLLYYLLYLY ", latitudeArray[0] + "");
+
         lan= String.valueOf(mLastLocation.getLatitude());
         lon = String.valueOf(mLastLocation.getLongitude());
+
+
+        lanMarker = new String[latitudeArray.length];
+        lonMarker = new String[latitudeArray.length];
+        markerLat = new Double[latitudeArray.length];
+        markerLong = new Double[latitudeArray.length];
+
+        for(int j=0; j<latitudeArray.length; j++)
+        {
+
+            lanMarker[j]= String.valueOf(latitudeArray[j]);
+            lonMarker[j]=String.valueOf(longitudeArray[j]);
+            markerLat[j] = Double.parseDouble(lanMarker[j]);
+            markerLong[j] = Double.parseDouble(lonMarker[j]);
+        }
+
+
+
         latitude = Double.parseDouble(lan);
         longitude= Double.parseDouble(lon);
 
@@ -326,8 +381,9 @@ public class MapsActivity extends AppCompatActivity implements
 
         latit=lan;
         lngtd=lon;
-         Log.i("latitude4", "["+ latitude+"]}}}}}}}}}}}}}}}}}}}}}}}}}}}}{{{{{{{{{{{{{{}}}");
+        Log.i("latitude4", "["+ latitude+"]}}}}}}}}}}}}}}}}}}}}}}}}}}}}{{{{{{{{{{{{{{}}}");
         Log.i("longtitude4", "["+ longitude+"]}}}}}}}}}}}}}}}}}}}}}}}}}}}}{{{{{{{{{{{{{{}}}");
+        Log.i("latitude555555555555", "["+ marker1Lat+"]}}}}}}}}}}}}}}}}}}}}}}}}}}}}{{{{{{{{{{{{{{}}}");
 
         // Add a marker in Sydney and move the camera
         DisplayMetrics displayMetrics = new DisplayMetrics();
@@ -337,52 +393,86 @@ public class MapsActivity extends AppCompatActivity implements
         float zoom_lvl = mMap.getCameraPosition().zoom;
         double dpPerdegree = 256.0*Math.pow(2, zoom_lvl)/170.0;
 
-        double screen_height_30p = 0.0006*height/100.0;
+        double screen_height_30p = 0.0005*height/100.0;
 
         double degree_30p = screen_height_30p/dpPerdegree;
 
 
+
+
+
         LatLng currentPosition = new LatLng(latitude-degree_30p, longitude- degree_30p);
 
-        parkSpace = new LatLng(latitude +0.001, longitude);
-         latMark1 = latitude + 0.001;
-         longMark1 = longitude;
 
+         parkSpace=new ArrayList<LatLng>();
+
+        for (int k=0;k<latitudeArray.length;k++){
+
+
+            parkSpace.add(new LatLng(markerLat[k],markerLong[k]));
+
+            latMark1 = marker1Lat;
+            longMark1 = marker1Long;
+
+            createMarker(k);
+
+
+
+        }
+
+        Geocoder geocoderCurrentPosition = new Geocoder(this, Locale.getDefault());
+        try {
+            List<Address> addresses = geocoderCurrentPosition.getFromLocation(latitude, longitude, 1);
+            if (addresses.size() > 0) {
+                cityName = addresses.get(0).getAddressLine(0);
+                // you should also try with addresses.get(0).toSring();
+                Log.i("CITYYYYYYYYYYYYYYYYY", "[" + cityName + "]}}}}}}}}}}}}}}}}}}}}}}}}}}}}{{{{{{{{{{{{{{}}}");
+                tvcurrentPosition.setText(cityName);
+            }
+            Log.i("CITYYYYYYYYYYYYYYYYY", "["+ addresses+"]}}}}}}}}}}}}}}}}}}}}}}}}}}}}{{{{{{{{{{{{{{}}}");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        /*
         parkSpace2 = new LatLng(latitude -0.002, longitude+0.001);
         latMark2 = latitude -0.002;
         longMark2 = longitude+0.001;
 
-         parkSpace3 = new LatLng(latitude -0.0014, longitude);
+        parkSpace3 = new LatLng(latitude -0.0014, longitude);
         latMark3 = latitude -0.0014;
-         longMark3 = longitude;
-/*
+        longMark3 = longitude;
+
         Marker  MarkerMe = mMap.addMarker(new MarkerOptions()
                 .position(currentPosition)
                 .icon(BitmapDescriptorFactory
                         .fromResource(R.drawable.menu_car)));
-*/
 
 
-       // mMap.setOnMarkerClickListener((GoogleMap.OnMarkerClickListener) this);
+
+        // mMap.setOnMarkerClickListener((GoogleMap.OnMarkerClickListener) this);
 
         Marker parkMarker = mMap.addMarker(new MarkerOptions()
-                .position(parkSpace)
+                .position(parkSpace.get(0))
                 .title("parkSpace1")
                 .snippet(cityName)
                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.mapmarker_one)));
+
 
         Marker parkMarker2 = mMap.addMarker(new MarkerOptions()
                 .position(parkSpace2)
                 .title("parkSpace2")
                 .snippet(cityName)
                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.mapmarker_four)));
+
+
+
         Marker parkMarker3 = mMap.addMarker(new MarkerOptions()
                 .position(parkSpace3)
                 .title("parkSpace3")
                 .snippet(cityName)
                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.mapmarker)));
 
-
+*/
 
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener()
         {
@@ -391,7 +481,7 @@ public class MapsActivity extends AppCompatActivity implements
             public boolean onMarkerClick(Marker marker) {
                 Log.i("CITYYYYYYYYYYYYYYYYY", "[" +marker.getId() + "]}}}}}}}}}}}}}}}}}}}}}}}}}}}}{{{{{{{{{{{{{{}}}");
 
-              //  Toast.makeText(ctx, marker.getTitle(), Toast.LENGTH_SHORT).show();// display toast
+                //  Toast.makeText(ctx, marker.getTitle(), Toast.LENGTH_SHORT).show();// display toast
                 LatLng Mposition = marker.getPosition();
                 double Mlatitude = Mposition.latitude;
                 double Mlongtitude = Mposition.longitude;
@@ -404,7 +494,7 @@ public class MapsActivity extends AppCompatActivity implements
                         cityName = addresses.get(0).getAddressLine(0);
                         // you should also try with addresses.get(0).toSring();
                         Log.i("CITYYYYYYYYYYYYYYYYY", "[" + cityName + "]}}}}}}}}}}}}}}}}}}}}}}}}}}}}{{{{{{{{{{{{{{}}}");
-                        tvdestinationMarker.setText(cityName);
+                        //tvdestinationMarker.setText(cityName);
                         tvdestinetionPosition.setText(cityName);
                     }
                     Log.i("CITYYYYYYYYYYYYYYYYY", "["+ addresses+"]}}}}}}}}}}}}}}}}}}}}}}}}}}}}{{{{{{{{{{{{{{}}}");
@@ -426,7 +516,7 @@ public class MapsActivity extends AppCompatActivity implements
                 // you should also try with addresses.get(0).toSring();
                 Log.i("CITYYYYYYYYYYYYYYYYY", "[" + cityName + "]}}}}}}}}}}}}}}}}}}}}}}}}}}}}{{{{{{{{{{{{{{}}}");
 
-                tvdestinationMarker.setText(cityName);
+               // tvdestinationMarker.setText(cityName);
                 tvdestinetionPosition.setText(cityName);
             }
             Log.i("CITYYYYYYYYYYYYYYYYY", "["+ addresses+"]}}}}}}}}}}}}}}}}}}}}}}}}}}}}{{{{{{{{{{{{{{}}}");
@@ -434,19 +524,7 @@ public class MapsActivity extends AppCompatActivity implements
             e.printStackTrace();
         }
 
-        Geocoder geocoder3 = new Geocoder(this, Locale.getDefault());
-        try {
-            List<Address> addresses = geocoder3.getFromLocation(latitude, longitude, 1);
-            if (addresses.size() > 0) {
-                cityName = addresses.get(0).getAddressLine(0);
-                // you should also try with addresses.get(0).toSring();
-                Log.i("CITYYYYYYYYYYYYYYYYY", "[" + cityName + "]}}}}}}}}}}}}}}}}}}}}}}}}}}}}{{{{{{{{{{{{{{}}}");
-                tvcurrentPosition.setText(cityName);
-            }
-            Log.i("CITYYYYYYYYYYYYYYYYY", "["+ addresses+"]}}}}}}}}}}}}}}}}}}}}}}}}}}}}{{{{{{{{{{{{{{}}}");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
 
 
 
@@ -468,6 +546,17 @@ public class MapsActivity extends AppCompatActivity implements
         mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
 
     }
+
+
+    protected Marker createMarker(int w) {
+
+        return mMap.addMarker(new MarkerOptions()
+                .position(parkSpace.get(w))
+                .title("parkSpace1")
+                .snippet(cityName)
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.mapmarker_one)));
+    }
+
 
     @Override
     public void onConnectionSuspended(int i) {
@@ -556,6 +645,168 @@ public class MapsActivity extends AppCompatActivity implements
 
     }
 
+    final void populateMarkers(String server_results) {
+        Context context=this;
+        Intent intent = getIntent();
+
+        String JsonTable = server_results;
+
+        Log.e("wwwwwwwwwww ", JsonTable + "");
 
 
+        JSONArray arr = null;
+        try {
+            arr = new JSONArray(JsonTable);
+
+        JSONObject jObj = arr.getJSONObject(0);
+        String date = jObj.getString("latitude");
+        JSONArray resultTable = null;
+
+        resultTable = arr;
+            latitudeArray = new String[resultTable.length()];
+            longitudeArray = new String[resultTable.length()];
+            int counter=0;
+            for (int i = 0; i < resultTable.length(); i++) {
+
+
+                JSONObject place = resultTable.getJSONObject(i);
+                LATSERVER = place.getString("latitude");;
+                LONGSERVER = place.getString("longitude");;
+                ID = place.getString("availableSpace");
+                Log.e("availableSpaces ", ID + "");
+                Log.e("SERIOUSLYYYYYYYYYYY ", LATSERVER + "");
+                Log.e("SERIOUSLYYYQQQQQQQ ", LONGSERVER + "");
+
+
+                latitudeArray[i]=LATSERVER;
+                longitudeArray[i]=LONGSERVER;
+                Log.e("FUUUUUUUUCK ",  latitudeArray[i] + "");
+                counter=counter+1;
+            }
+            if (counter==0){
+
+                dialogBox();
+            }
+
+
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
+
+
+
+
+    }
+
+
+
+    /*
+    public class MarkerDemoActivity extends android.support.v4.app.FragmentActivity
+            implements GoogleMap.OnMarkerClickListener
+    {
+        private Marker myMarker;
+
+        private void setUpMap()
+        {
+
+            mMap.setOnMarkerClickListener(this);
+
+            Marker parkMarker = mMap.addMarker(new MarkerOptions()
+                    .position(parkSpace)
+                    .title("parkSpace")
+                    .snippet(cityName)
+                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.mapmarker_one)));
+
+            Marker parkMarker2 = mMap.addMarker(new MarkerOptions()
+                    .position(parkSpace2)
+                    .title("parkSpace")
+                    .snippet(cityName)
+                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.mapmarker_four)));
+            Marker parkMarker3 = mMap.addMarker(new MarkerOptions()
+                    .position(parkSpace3)
+                    .title("parkSpace")
+                    .snippet(cityName)
+                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.mapmarker)));
+
+        }
+
+        @Override
+        public boolean onMarkerClick(final Marker marker) {
+
+            if (marker.equals(myMarker))
+            {
+                LatLng Mposition = marker.getPosition();
+                double Mlatitude = Mposition.latitude;
+                double Mlongtitude = Mposition.longitude;
+
+                // Mlongitude = this.position.lng();
+                Geocoder geocoder2 = new Geocoder(this, Locale.getDefault());
+                try {
+                    List<Address> addresses = geocoder2.getFromLocation(Mlatitude, Mlongtitude, 1);
+                    if (addresses.size() > 0) {
+                        cityName = addresses.get(0).getAddressLine(0);
+                        // you should also try with addresses.get(0).toSring();
+                        Log.i("CITYYYYYYYYYYYYYYYYY", "[" + cityName + "]}}}}}}}}}}}}}}}}}}}}}}}}}}}}{{{{{{{{{{{{{{}}}");
+                        tvdestinationMarker.setText(cityName);
+                        tvdestinetionPosition.setText(cityName);
+                    }
+                    Log.i("CITYYYYYYYYYYYYYYYYY", "["+ addresses+"]}}}}}}}}}}}}}}}}}}}}}}}}}}}}{{{{{{{{{{{{{{}}}");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+/*
+                Geocoder geocoder3 = new Geocoder(this, Locale.getDefault());
+                try {
+                    List<Address> addresses = geocoder3.getFromLocation(latMark2, longMark2, 1);
+                    if (addresses.size() > 0) {
+                        cityName = addresses.get(0).getAddressLine(0);
+                        // you should also try with addresses.get(0).toSring();
+                        Log.i("CITYYYYYYYYYYYYYYYYY", "[" + cityName + "]}}}}}}}}}}}}}}}}}}}}}}}}}}}}{{{{{{{{{{{{{{}}}");
+                        tvdestinationMarker.setText(cityName);
+                        tvdestinetionPosition.setText(cityName);
+                    }
+                    Log.i("CITYYYYYYYYYYYYYYYYY", "["+ addresses+"]}}}}}}}}}}}}}}}}}}}}}}}}}}}}{{{{{{{{{{{{{{}}}");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                //handle click here
+            }
+            return true;
+        }
+
+    }
+    */
+    public void dialogBox() {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        alertDialogBuilder.setIcon(R.drawable.ic_alert);
+
+        alertDialogBuilder.setTitle("Κανένα Αποτέλεσμα");
+        alertDialogBuilder.setMessage("Η αναζήτηση σας δεν έβγαλε αποτελέσματα, παρακαλώ ξαναπροσπαθήστε.");
+        alertDialogBuilder.setNegativeButton("Επιστροφή",
+                new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface arg0, int arg1) {
+
+
+
+                        Intent SearchIntent = new Intent(MapsActivity.this, UserActivity.class);
+                        // SearchIntent.putExtra("id", "0");
+                        SearchIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        SearchIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        MapsActivity.this.startActivity(SearchIntent);
+
+                    }
+                });
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
+        alertDialog.getWindow().setBackgroundDrawableResource(R.color.colorBackround);
+
+
+    }
 }

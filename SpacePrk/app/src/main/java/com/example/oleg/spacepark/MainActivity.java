@@ -232,7 +232,9 @@ public class MainActivity extends AppCompatActivity {
 
                             startActivity(intent);
 
+                                            BackGround b = new BackGround();
 
+                                            b.execute(user.NAME, user.LAST_NAME, user.EMAIL);
                         }else{
                             dialogBox2();
                         }
@@ -292,7 +294,139 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    public void register_register(View v) {
+        //name = etName.getText().toString().replaceAll("'", " ");
+        //last_name = etLastName.getText().toString();
+        //email = etMail.getText().toString();
+       // password = etPasswordLog.getText().toString();
+        //rep_password = etConfPassword.getText().toString();
+        BackGround b = new BackGround();
 
+        
+
+        /*
+        if (name !=null  && !name.isEmpty()) {
+            // if (last_name != null && !last_name.isEmpty()) {
+            if (isEmailValid(email)) {   ///καλει την μέθοδο isEmailValid και αν true τοτε εκτελει την μεθοδο b
+                if (password !=null  && !password.isEmpty()) {
+                    if (password.equals(rep_password)) {
+
+                        NAME=name.replaceAll("'", " ");
+                        LAST_NAME=last_name.replaceAll("'", " ");
+                        EMAIL=email;
+                        PASSWORD=password;
+                        b.execute(NAME, LAST_NAME, EMAIL, PASSWORD, rep_password);
+                    } else {
+
+                        Toast.makeText(ctx, "Προσοχή Οι κωδικοί δεν ταυτίζονται!  ", Toast.LENGTH_LONG).show();
+                    }
+                }else {
+
+                    Toast.makeText(ctx, "Έισάγεται τον κωδικό σας", Toast.LENGTH_LONG).show();
+                }
+
+            } else {
+                dialogBox(); //καλει την μεθοδο dialogBox εφόσων η μέθοδος is EmailValid είναι false
+
+            }
+        } else {
+            Toast.makeText(ctx, "Συμπληρώστε το Όνομα Χρήστη σας", Toast.LENGTH_LONG).show();
+
+        }
+*/
+    }
+
+
+
+
+
+
+    class BackGround extends AsyncTask<String, String, String> {
+
+        @Override
+        protected String doInBackground(String... params) {
+            String name = params[0];
+            String last_name= params[1];
+            String email = params[2];
+
+            String data = "";
+            int tmp;
+            try {
+
+                HttpURLConnection urlConnection = null;
+
+                JSONObject object = null;
+                InputStream inStream = null;
+                URL url = new URL("aaaaaaaaaaaa.php");
+
+                try {
+                    url = new URL(url.toString());
+                    urlConnection = (HttpURLConnection) url.openConnection();
+                    urlConnection.setRequestMethod("GET");
+                    urlConnection.setDoOutput(true);
+                    urlConnection.setDoInput(true);
+                    urlConnection.connect();
+                    inStream = urlConnection.getInputStream();
+                    BufferedReader bReader = new BufferedReader(new InputStreamReader(inStream));
+                    String temp, response = "";
+                    while ((temp = bReader.readLine()) != null) {
+                        response += temp;
+                    }
+                    object = (JSONObject) new JSONTokener(response).nextValue();
+                    // Log.i("Json  isssss", "[" + object + "]}}}}}}}}}}}}}}}}}}}}}}}}}}}}{{{{{{{{{{{{{{}}}");
+                    JSONArray resultTable = null;
+
+                    resultTable = object.getJSONArray("results of php file");
+                    for (int i = 0; i < resultTable.length(); i++) {
+
+                        // Storing  JSON item in a Variable
+
+                        JSONObject place = resultTable.getJSONObject(i);
+                        //PER_NAME = place.getString("name");
+                      //  ADDRESS = place.getString("vicinity");
+                        //LAT = place.getJSONObject("geometry").getJSONObject("location").getString("lat");
+                       // LNG = place.getJSONObject("geometry").getJSONObject("location").getString("lng");
+                        //ID = place.getString("place_id");
+
+                    }
+
+/*
+                    Intent intent = new Intent(MainActivity.this, UserActivity.class);
+                    intent.putExtra("vehicles", total_vehicles);
+                    intent.putExtra("size", car_size);
+
+                    startActivity(intent);
+                    */
+                } catch (Exception e) {
+
+                } finally {
+                    if (inStream != null) {
+                        try {
+                            // this will close the bReader as well
+                            inStream.close();
+
+                        } catch (IOException ignored) {
+                        }
+                    }
+
+                    if (urlConnection != null) {
+                        urlConnection.disconnect();
+                    }
+                }
+
+            }
+
+            catch (MalformedURLException e) {
+                e.printStackTrace();
+                return "Exception: " + e.getMessage();
+            }
+
+
+
+            return data;
+        }
+
+    }
 
 
 
