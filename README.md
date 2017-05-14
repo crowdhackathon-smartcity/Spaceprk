@@ -1,6 +1,8 @@
 # SpacePrk
 
-SpacePrk 
+Find parking space based on your car size, free or paid. You also have the option to become a "parker" and share you parking space to increase your income.
+
+It can also be used to marines for better yacht's space management.
 
 ## Built With
 
