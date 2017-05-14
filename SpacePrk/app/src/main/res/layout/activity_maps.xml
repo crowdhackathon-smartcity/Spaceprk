@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MapsActivity">
+
+
+    <include
+        android:id="@+id/toolbarmap"
+        layout="@layout/tool_bar"
+        />
+
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/drawer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbarmap"
+        >
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MapsActivity"
+    android:layout_below="@+id/toolbarmap">
+
+
+
+
+
+<fragment xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:map="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/map"
+    android:name="com.google.android.gms.maps.SupportMapFragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.oleg.spacepark.MapsActivity"
+    />
+
+
+    <TextView
+
+        android:id="@+id/found_spots"
+        android:layout_width="match_parent"
+        android:layout_height="49dp"
+        android:layout_below="@+id/toolbarmap"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/blueblack"
+        android:gravity="center"
+        android:padding="5dp"
+        android:paddingLeft="10dp"
+        android:text="FOUND 3 FREE SPOTS"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="15sp" />
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/hold_on"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+
+        android:layout_alignEnd="@+id/mapdata"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/mapdata"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/hold_on"
+        android:gravity="center"
+        android:textColor="#ffffff"
+        android:textSize="18sp" />
+    <include
+        android:id="@+id/mapdata"
+        layout="@layout/map_data"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_above="@id/hold_on"
+
+
+
+
+        />
+
+
+
+
+</RelativeLayout>
+</FrameLayout>
+
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="235dp"
+            android:layout_height="match_parent"
+            android:id="@+id/recyclerViewMap"
+            android:scrollbars="vertical"
+            android:background="@color/white"
+            android:layout_gravity="left"
+            android:onClick="true"
+
+            >
+
+        </android.support.v7.widget.RecyclerView>
+
+    </android.support.v4.widget.DrawerLayout>
+
+
+</RelativeLayout>

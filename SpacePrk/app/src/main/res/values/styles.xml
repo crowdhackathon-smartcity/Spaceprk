@@ -1,14 +1,16 @@
 <resources>
 
+
+
+
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/gray</item>
         <item name="colorPrimaryDark">@color/blueSplash</item>
 
     </style>
 
-	
-	
-	 <style name="FacebookLoginButton">
+
+    <style name="FacebookLoginButton">
         <item name="android:text"></item>
 
         <item name="android:textSize">22dp</item>
@@ -26,8 +28,29 @@
 
     </style>
 
+
+
+
+    <!-- Theme based to Apptheme -->
+    <style name="Widget.Rbt.ActionBar" parent="@style/Widget.AppCompat.ActionBar">
+        <item name="background">@color/gray</item>
+
+        <item name="colorPrimary">@color/white</item>
+
+
+    </style>
+    <style name="LoginTheme" parent="@style/Theme.AppCompat.Light">
+        <item name="actionBarStyle">@style/Widget.Rbt.ActionBar</item>
+        <item name="windowActionBar">true</item>
+
+
+
+
+    </style>
+
     <style name="toggle_text" parent="@android:style/TextAppearance.Small">
         <item name="android:textColor">@color/bluelight</item>
     </style>
+
 
 </resources>

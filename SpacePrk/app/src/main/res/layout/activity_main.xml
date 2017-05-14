@@ -10,6 +10,7 @@
     android:background="@drawable/background"
     >
 
+	
     <include
         android:id="@+id/toolbarmain"
         layout="@layout/tool_barmain" />
@@ -71,7 +72,7 @@
         xmlns:facebook="http://schemas.android.com/apk/res-auto"
         facebook:com_facebook_login_text="@string/loginFacebookButton"
 
-        />
+         />
 
     <ImageView
         android:id="@+id/email_image"

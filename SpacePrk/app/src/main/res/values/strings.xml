@@ -7,7 +7,7 @@
     <string name="openDrawer">Navigation View Closed</string>
     <string name="app">SpacePrk</string>
 
-
+	
 
     <string-array name="navDrawerItems">
 
@@ -33,7 +33,14 @@
 
 
     </string-array>
+    <array name="myImages">
+        <item>@drawable/bmw</item>
+        <item>@drawable/ww</item>
+        <item>@drawable/mercedes</item>
+        <item>@drawable/porshe</item>
 
+    </array>
+    <string name="title_activity_maps">Map</string>
 
 
 </resources>

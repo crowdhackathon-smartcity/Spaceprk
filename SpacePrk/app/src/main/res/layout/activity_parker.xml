@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".Parker"
+    >
+    <!--TOOLBAR -->
+
+
+
+    <!--FLAG AND x -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:id="@+id/flag_x"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
+
+
+        <ImageButton
+            android:id="@+id/X"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:background="@drawable/cancel"
+            android:clickable="true"
+            android:layout_marginLeft="16dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="12dp" />
+
+        <ImageButton
+            android:id="@+id/flag"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:background="@drawable/flag"
+            android:layout_marginLeft="16dp"
+            android:layout_centerVertical="true"
+            />
+
+    </RelativeLayout>
+
+
+    <!--BECOME A PARKER -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:id="@+id/relative_become"
+        android:layout_height="35dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true">
+
+        <ImageButton
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/become"
+            android:background="@drawable/become_parker"/>
+
+
+
+    </RelativeLayout>
+
+
+
+    <!--Main  -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/relative_become"
+        android:layout_below="@+id/flag_x"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        >
+        <!--Apply Now -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Apply Now"
+            android:textSize="25sp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="3dp"
+            android:id="@+id/Apply_now" />
+
+        <!--Question Mark  -->
+        <ImageView
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="30dp"
+            android:layout_toEndOf="@+id/Apply_now"
+            android:background="@drawable/question_mark"
+            android:id="@+id/question" />
+
+
+        <!--Enter your info.....  -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Enter your info and create your parker profile in 3 steps"
+            android:textSize="16.5sp"
+            android:textColor="@color/black"
+            android:id="@+id/Enter_your_info"
+            android:layout_marginTop="25dp"
+            android:layout_below="@+id/question"
+            android:layout_alignParentStart="true" />
+
+
+        <!--First NAME-->
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/etextUserName"
+            android:textColor="@color/black"
+            android:textColorHint="@color/grey"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="110dp"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/Enter_your_info"
+            android:hint="FIRST NAME"
+            android:textSize="14sp"
+            android:imeOptions="actionNext"
+            android:maxLines="1" />
+        <!--Last Name-->
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/etextLastName"
+            android:textColor="@color/black"
+            android:textColorHint="@color/grey"
+            android:hint="LAST NAME"
+            android:layout_alignParentEnd="true"
+            android:imeOptions="actionNext"
+            android:maxLines="1"
+            android:textSize="14sp"
+            android:layout_marginTop="8dp"
+            android:layout_below="@+id/etextUserName"
+            android:layout_alignParentStart="true" />
+
+
+        <!--MAIL-->
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:ems="10"
+            android:id="@+id/etextMail"
+            android:textColor="@color/black"
+            android:textColorHint="@color/grey"
+            android:hint="EMAIL ADDRESS"
+            android:imeOptions="actionNext"
+            android:maxLines="1"
+            android:textSize="14sp"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/etextLastName"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="8dp" />
+
+        <!--NUMBER-->
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:ems="10"
+            android:id="@+id/number"
+            android:textColor="@color/black"
+            android:textColorHint="@color/grey"
+            android:hint="MOBILE NUMBER"
+            android:imeOptions="actionNext"
+            android:maxLines="1"
+            android:textSize="14sp"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/etextMail"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="8dp" />
+
+        <!--POSTCODE-->
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:ems="10"
+            android:textSize="14sp"
+            android:id="@+id/etPostCode"
+            android:textColor="@color/black"
+            android:textColorHint="@color/grey"
+            android:hint="POSTCODE"
+            android:imeOptions="actionDone"
+            android:maxLines="1"
+            android:layout_below="@+id/number"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="110dp"
+            android:layout_alignRight="@+id/find_add"
+            android:layout_toStartOf="@+id/find_add"
+            />
+        <!--FIND ADDRESS-->
+        <ImageButton
+            android:layout_width="98dp"
+            android:layout_height="30dp"
+            android:background="@drawable/find_add_grey_blue"
+            android:id="@+id/find_add"
+            android:layout_marginBottom="7dp"
+            android:layout_alignParentEnd="true"
+            android:layout_above="@+id/fake_map" />
+
+        <!--FAKE MAP-->
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/map_dum"
+            android:layout_below="@id/etPostCode"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="10dp"
+            android:id="@+id/fake_map"
+            />
+        <!--EIKONA 1/3-->
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="5dp"
+            android:background="@drawable/one_of_three"
+            android:layout_alignBottom="@+id/Apply_now"
+            android:layout_alignParentEnd="true"
+            android:id="@+id/one"/>
+        <!--1/3-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/one"
+            android:layout_alignParentEnd="true"
+            android:textSize="10sp"
+            android:text="1/3"/>
+
+
+
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>
