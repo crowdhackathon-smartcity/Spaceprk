@@ -33,23 +33,26 @@ namespace SpacePrk.Repositories
             return freeSpaces;
         }
 
-        public bool InsertParkingSpace(PostFreeSpaceRequest request)
+        public bool InsertParkingSpace(List<PostFreeSpaceRequest> request)
         {
             if (request == null)
             {
                 return false;
             }
 
-            var spaceToAdd = new ParkingSpace()
+            foreach (var req in request)
             {
-                AvailableSpace = request.SpaceLength,
-                Latitude = request.Latitude,
-                Longitude = request.Longitude,
-                IsFree = true
-            };
+                var spaceToAdd = new ParkingSpace()
+                {
+                    AvailableSpace = req.SpaceLength,
+                    Latitude = req.Latitude,
+                    Longitude = req.Longitude,
+                    IsFree = true
+                };
 
-            _context.ParkingSpace.Add(spaceToAdd);
-
+                _context.ParkingSpace.Add(spaceToAdd);
+            }
+          
             return (_context.SaveChanges() > 0) ? true : false;
         }
 

@@ -10,7 +10,7 @@ namespace SpacePrk.Services.Interfaces
     {
         IEnumerable<ParkingSpace> GetAvailablePrkSpacesByCarType(ParkingSpaceRequest request);
         IEnumerable<ParkingSpace> GetAllAvailablePrkSpaces();
-        bool InsertParkingSpace(PostFreeSpaceRequest request);
+        bool InsertParkingSpace(List<PostFreeSpaceRequest> request);
         IEnumerable<ParkingSpace> GetDisabilitySpaces();
     }
 }

@@ -7,6 +7,8 @@ namespace SpacePrk.Models
     public class Member : BaseModel
     {
         public int Memberid { get; set; }
+        [MaxLength(128)]
+        public string AspNetUserId { get; set; }
         [MaxLength(50)]
         public string FirstName { get; set; }
         [MaxLength(50)]

@@ -59,7 +59,7 @@ namespace SpacePrk.Services
             return freeSpacesToReturn;
         }
 
-        public bool InsertParkingSpace(PostFreeSpaceRequest request)
+        public bool InsertParkingSpace(List<PostFreeSpaceRequest> request)
         {
             var success = _prkSpaceRepo.InsertParkingSpace(request);
 
