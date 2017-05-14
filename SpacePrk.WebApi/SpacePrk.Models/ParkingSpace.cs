@@ -8,5 +8,6 @@
         public bool IsFree { get; set; } = true;
         public float AvailableSpace { get; set; }
         public bool? IsDisabilitySpace { get; set; }
+        public int SensorId { get; set; }
     }
 }

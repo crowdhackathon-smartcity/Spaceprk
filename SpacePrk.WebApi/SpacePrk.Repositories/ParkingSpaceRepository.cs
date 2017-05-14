@@ -35,10 +35,8 @@ namespace SpacePrk.Repositories
 
         public bool InsertParkingSpace(List<PostFreeSpaceRequest> request)
         {
-            if (request == null)
-            {
-                return false;
-            }
+           
+            // Add function later to erase old data from same sensor before saving the new
 
             foreach (var req in request)
             {

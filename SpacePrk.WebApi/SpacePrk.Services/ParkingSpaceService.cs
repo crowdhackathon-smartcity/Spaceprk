@@ -61,6 +61,11 @@ namespace SpacePrk.Services
 
         public bool InsertParkingSpace(List<PostFreeSpaceRequest> request)
         {
+            if (request == null)
+            {
+                return false;
+            }
+
             var success = _prkSpaceRepo.InsertParkingSpace(request);
 
             return (success) ? true : false;
